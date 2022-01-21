@@ -124,7 +124,10 @@ class CLIFS:
     def search(self, query, n=9, threshold=37):
         # Takes a query, calculates its features and finds the most similar
         # image features and thus corresponding images
+        print("Text Inputs -1")
         text_inputs = torch.cat([clip.tokenize(query)]).to(self.device)
+        print("Text Inputs +1")
+
         with torch.no_grad():
             text_features = self.model.encode_text(text_inputs)
         text_features /= text_features.norm(dim=-1, keepdim=True)
